@@ -34,28 +34,34 @@
             contenitore.append(myScrollBar);
 
             var wpos = $(window).scrollTop() + $(window).height();
-            var elmPos = contenitore.position().top;
+            var elmPos = contenitore.offset().top;
             var elmHeight = contenitore.height();
-            if ((wpos > (elmPos + 100)) && (wpos < (elmPos + elmHeight))) {
+            if ((wpos > (elmPos + opts.topDelay)) && (wpos < (elmPos + elmHeight))) {
                 myScrollBar.find("div").width(contenuto.width());
-                myScrollBar.fadeIn(20);
+                myScrollBar.fadeIn(opts.fadeIn);
                 myScrollBar.scrollLeft(contenitore.scrollLeft());
             } else {
-                myScrollBar.fadeOut(20);
+                myScrollBar.fadeOut(opts);
             }
             $(window).scroll(function() {
                 var wpos = $(window).scrollTop() + $(window).height();
 
                 $.each(scrollBars, function(key, bar) {
-                    var elmPos = bar.contenitore.position().top;
+                    var elmPos = bar.contenitore.offset().top;
                     var elmHeight = bar.contenitore.height();
-                    if ((wpos > (elmPos + 100)) && (wpos < (elmPos + elmHeight))) {
+                    if ((wpos > (elmPos + opts.topDelay)) && (wpos < (elmPos + elmHeight))) {
+                        bar.myScrollBar.width(contenitore.width());
                         bar.myScrollBar.find("div").width(bar.contenuto.width());
-                        bar.myScrollBar.fadeIn(20);
+                        bar.myScrollBar.fadeIn(opts.fadeIn);
                         bar.myScrollBar.scrollLeft(bar.contenitore.scrollLeft());
                     } else {
-                        bar.myScrollBar.fadeOut(20);
+                        bar.myScrollBar.fadeOut(opts.fadeOut);
                     }
+                });
+            });
+            $(window).resize(function(event) {
+                $.each(scrollBars, function(key, bar) {
+                    bar.myScrollBar.width(contenitore.width());
                 });
             });
         });
@@ -63,6 +69,9 @@
     $.fn.dynamicScrollBar.defaults = {
         scrollableContent: 'table',
         scrollBarClass: '',
+        topDelay: 100,
+        fadeIn: 20,
+        fadeOut: 20,
         style: {
             'bottom': '0',
             'height': '17px',
