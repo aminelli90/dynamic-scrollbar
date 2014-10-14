@@ -8,7 +8,7 @@ That scrollbar appear at the beginning and disappear automatically at the end of
 DEFAULT PARAMETERS DESCRIPTION
 
 scrollableContent: 'table' --> the content's type you want to scroll
-scrollableBarClass: '' --> gives you the choice to add a personal Class for your scrollBar
+scrollableBarClass: '' --> gives you the opportunity to add a personal Class for your scrollBar
 
 
 
