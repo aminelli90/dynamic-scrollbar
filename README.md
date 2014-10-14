@@ -5,6 +5,8 @@ Use this plugin for simplify your navigation through large tables or other conte
 
 That scrollbar appear at the beginning and disappear automatically at the end of the element you want to scroll horizontally, with a fixed position at the bottom of the page.
 
+The scrollbar show up as soon as you start scrolling your large content vertically.
+
 DEFAULT PARAMETERS DESCRIPTION
 
 scrollableContent: 'table' --> the content's type you want to scroll
